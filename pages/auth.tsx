@@ -1,22 +1,23 @@
 import axios from 'axios';
 import { useCallback, useState } from "react";
 import Input from "@/components/Input";
-
+import { signIn } from 'next-auth/react';
 
 const Auth = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    
 
     const [variant, setVariant] = useState('login');
 
     const toggleVariant = useCallback(() => {
-        setVariant((currentVariant) => currentVariant == 'login' ? 'register' : 'login');
+        setVariant((currentVariant) => currentVariant === 'login' ? 'register' : 'login');
     }, []);
 
     const register = useCallback(async () => {
         try {
-            await axios.post('/api/register', {
+            await axios.post('./api/register', {
                 email,
                 name,
                 password
@@ -25,6 +26,14 @@ const Auth = () => {
             console.log(error);
         }
     }, [email, name, password]);
+
+    const login = userCallback(async () => {
+        try {
+            await signIn('')
+        } catch (error){
+            console.log(error);
+        }
+    }, [email, password]);
 
     return (
         <div className="relative h-full w-full bg-[url('/images/hero.jpeg')] bg-no-repeat bg-center bg-fixed bg-cover">
