@@ -91,7 +91,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
                         onClick={() => {}}>
                             <BsFillPlayFill size={30} />
                         </div>
-                        <FavoriteButton movieId={data?.Id} />
+                        <FavoriteButton movieId={data?.id} />
                     </div>
                     <p className="text-green-400 font-semibold mt-4">
                         New <span className="text-white">2023</span>

@@ -9,7 +9,7 @@ interface FavoriteButtonProps {
     movieId: string;
 }
 
-const FavoriteButton:React.FC<FavoriteButtonProps> = ({ movieId }) => {
+const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
     const{ mutate: mutateFavorites } = useFavorites();
     
     const { data: currentUser, mutate } = useCurrentUser();
@@ -26,7 +26,7 @@ const FavoriteButton:React.FC<FavoriteButtonProps> = ({ movieId }) => {
         if (isFavorite) {
             response = await axios.delete('/api/favorite', {data: { movieId }});
         } else {
-            response = await axios.post('/api/favorite', {movieId });
+            response = await axios.post('/api/favorite', { movieId });
         }
 
         const updatedFavoriteIds = response?.data?.favoriteIds;
